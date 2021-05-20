@@ -43,7 +43,7 @@ mkdir -p $OUT_PATH
 make O=$OUT_PATH ARCH=arm64 $DEVICE_CONFIG
 
 # Build kernel
-make -j$(nproc --all) O=$OUT_PATH ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- Image.gz-dtb
+make -j$(nproc --all) O=$OUT_PATH ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
 
 # Building DTBO
 # https://android.googlesource.com/platform/system/libufdt/+archive/master/utils.tar.gz
