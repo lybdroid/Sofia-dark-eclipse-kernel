@@ -3,7 +3,7 @@
 # Variables
 export ARCH=arm64
 export SUBARCH=arm64
-export DTC_EXT=dtc
+# export DTC_EXT=dtc
 export DEVICE=sofiar
 export DEVICE_CONFIG=vendor/sofiar_defconfig
 
@@ -36,7 +36,11 @@ export OUT_PATH=$PWD/out
 # Update PATH (dtc,clang,tc)
 # DTC needed (https://forum.xda-developers.com/attachments/device-tree-compiler-zip.4829019/)
 # More info:  https://forum.xda-developers.com/t/guide-how-to-compile-kernel-dtbo-for-redmi-k20.3973787/
-PATH="/android/bin:$CLANG_PATH/bin:$TC_PATH/bin:$TC_PATH32/bin:$PATH"
+
+mkdir $HOME/dtc
+wget https://github.com/lybdroid/raw-files/raw/main/bin/dtc -o $HOME/dtc/dtc
+
+PATH="$HOME/dtc:$CLANG_PATH/bin:$TC_PATH/bin:$TC_PATH32/bin:$PATH"
 
 mkdir -p $OUT_PATH
 
@@ -68,7 +72,7 @@ fi
 # AnyKernel
 if $BUILD_ZIP; then
 
-export ANYKERNEL_URL=https://github.com/lybdroid/Sofia-dark-eclipse-kernel.git
+export ANYKERNEL_URL=https://github.com/Odin1101/Sofia-dark-eclipse-kernel-zip.git
 export ANYKERNEL_PATH=$OUT_PATH/AnyKernel3
 export ANYKERNEL_BRANCH=Main
 export ZIPNAME="dark-$DEVICE-$(date '+%Y%m%d-%H%M').zip"
