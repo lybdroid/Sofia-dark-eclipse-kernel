@@ -1,0 +1,23 @@
+kind: pipeline
+name: Surya_bleed
+
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  depth: 1
+
+steps:
+  - name: setup&bleed
+    image: ubuntu:latest
+    environment:
+      BOTTOKEN:
+        from_secret: token
+      CHATID:
+        from_secret: chat_id
+    commands:
+      - apt update && apt-get install -y build-essential bc python curl git zip ftp libssl-dev lftp zstd wget libfl-dev flex bison cpio device-tree-compiler
+      - chmod +x kramel.sh
+      - bash kramel.sh
+
