@@ -58,7 +58,7 @@ make -j$(nproc --all) O=out \
                       CC=clang \
                       CLANG_TRIPLE=aarch64-linux-gnu- \
                       CROSS_COMPILE=aarch64-linux-android- \
-                      CROSS_COMPILE_ARM32=arm-linux-androideabi-
+                      CROSS_COMPILE_ARM32=arm-linux-androideabi- Image.gz-dtb dtbo.img
 
 # Building DTBO
 # https://android.googlesource.com/platform/system/libufdt/+archive/master/utils.tar.gz
