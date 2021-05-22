@@ -83,9 +83,9 @@ fi
 # AnyKernel
 if $BUILD_ZIP; then
 
-export ANYKERNEL_URL=https://github.com/Odin1101/Sofia-dark-eclipse-kernel-zip.git
+export ANYKERNEL_URL=https://github.com/lybdroid/AnyKernel3.git
 export ANYKERNEL_PATH=$OUT_PATH/AnyKernel3
-export ANYKERNEL_BRANCH=Main
+export ANYKERNEL_BRANCH=sofia
 export ZIPNAME="dark-$DEVICE-$(date '+%Y%m%d-%H%M').zip"
 
 if [ -f "$OUT_PATH/arch/arm64/boot/Image.gz-dtb" ]; then
