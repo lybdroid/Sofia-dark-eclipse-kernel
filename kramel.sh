@@ -76,6 +76,8 @@ if $BUILD_DTBO; then
 	fi
 fi
 
+find out/arch/arm64/boot/dts -name '*.dtb' -exec cat {} + > out/arch/arm64/boot/dtb
+
 #
 # Kernel packaging
 #
@@ -88,10 +90,15 @@ export ANYKERNEL_PATH=$OUT_PATH/AnyKernel3
 export ANYKERNEL_BRANCH=sofia
 export ZIPNAME="dark-$DEVICE-$(date '+%Y%m%d-%H%M').zip"
 
-if [ -f "$OUT_PATH/arch/arm64/boot/Image.gz-dtb" ]; then
+if [ -f "$OUT_PATH/arch/arm64/boot/Image" ]; then
 	echo -e "Packaging...\n"
 	git clone -q $ANYKERNEL_URL $ANYKERNEL_PATH -b $ANYKERNEL_BRANCH
-	cp $OUT_PATH/arch/arm64/boot/Image.gz-dtb $ANYKERNEL_PATH
+	cp $OUT_PATH/arch/arm64/boot/Image $ANYKERNEL_PATH
+
+	if  [ -f "$OUT_PATH/arch/arm64/boot/dtb" ]; then
+		cp $OUT_PATH/arch/arm64/boot/dtb $ANYKERNEL_PATH
+	fi
+	
 	if  [ -f "$OUT_PATH/arch/arm64/boot/dtbo.img" ]; then
 		cp $OUT_PATH/arch/arm64/boot/dtbo.img $ANYKERNEL_PATH
 	else
