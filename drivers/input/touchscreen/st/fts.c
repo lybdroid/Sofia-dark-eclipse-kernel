@@ -4584,9 +4584,9 @@ static int fts_probe(struct i2c_client *client,
 	input_set_abs_params(info->input_dev, ABS_MT_POSITION_Y,
 			Y_AXIS_MIN, Y_AXIS_MAX, 0, 0);
 	input_set_abs_params(info->input_dev, ABS_MT_TOUCH_MAJOR,
-			AREA_MIN, AREA_MAX, 0, 0);
+			AREA_MIN, 63, 0, 0);
 	input_set_abs_params(info->input_dev, ABS_MT_TOUCH_MINOR,
-			AREA_MIN, AREA_MAX, 0, 0);
+			AREA_MIN, 63, 0, 0);
 
 #ifdef PHONE_GESTURE
 	input_set_capability(info->input_dev, EV_KEY, KEY_WAKEUP);
